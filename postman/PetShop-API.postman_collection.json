@@ -1,0 +1,192 @@
+{
+  "info": {
+    "name": "Pet Shop API",
+    "description": "Colecao de testes para a Pet Shop API (Spring Boot)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" }
+  ],
+  "item": [
+    {
+      "name": "Categorias",
+      "item": [
+        {
+          "name": "Listar",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/categorias" }
+        },
+        {
+          "name": "Buscar por ID",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/categorias/1" }
+        },
+        {
+          "name": "Criar",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/categorias",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Racao\",\n  \"descricao\": \"Alimentacao seca\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Atualizar",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/categorias/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Racao Premium\",\n  \"descricao\": \"Alimentacao premium\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Deletar",
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/api/categorias/1" }
+        }
+      ]
+    },
+    {
+      "name": "Produtos",
+      "item": [
+        {
+          "name": "Listar (todos)",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/produtos" }
+        },
+        {
+          "name": "Listar por categoria",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/produtos?categoriaId=1" }
+        },
+        {
+          "name": "Buscar por nome",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/produtos?nome=racao" }
+        },
+        {
+          "name": "Buscar por ID",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/produtos/1" }
+        },
+        {
+          "name": "Criar",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/produtos",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Racao Premium 15kg\",\n  \"descricao\": \"Racao super premium\",\n  \"preco\": 189.90,\n  \"estoque\": 30,\n  \"ativo\": true,\n  \"categoriaId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Atualizar",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/produtos/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Racao Premium 15kg\",\n  \"descricao\": \"Atualizada\",\n  \"preco\": 199.90,\n  \"estoque\": 25,\n  \"ativo\": true,\n  \"categoriaId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Deletar",
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/api/produtos/1" }
+        }
+      ]
+    },
+    {
+      "name": "Clientes",
+      "item": [
+        {
+          "name": "Listar",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/clientes" }
+        },
+        {
+          "name": "Buscar por ID",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/clientes/1" }
+        },
+        {
+          "name": "Criar",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/clientes",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Maria Silva\",\n  \"email\": \"maria@example.com\",\n  \"cpf\": \"12345678901\",\n  \"telefone\": \"11999990001\",\n  \"endereco\": \"Rua A, 100 - Sao Paulo/SP\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Atualizar",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/clientes/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Maria Silva Souza\",\n  \"email\": \"maria@example.com\",\n  \"cpf\": \"12345678901\",\n  \"telefone\": \"11999990002\",\n  \"endereco\": \"Rua B, 200\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Deletar",
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/api/clientes/1" }
+        }
+      ]
+    },
+    {
+      "name": "Pedidos",
+      "item": [
+        {
+          "name": "Listar",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/pedidos" }
+        },
+        {
+          "name": "Listar por cliente",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/pedidos?clienteId=1" }
+        },
+        {
+          "name": "Buscar por ID",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/pedidos/1" }
+        },
+        {
+          "name": "Criar pedido",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/pedidos",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clienteId\": 1,\n  \"itens\": [\n    { \"produtoId\": 1, \"quantidade\": 2 },\n    { \"produtoId\": 3, \"quantidade\": 1 }\n  ]\n}"
+            }
+          }
+        },
+        {
+          "name": "Atualizar status",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/pedidos/1/status",
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"status\": \"PAGO\" }"
+            }
+          }
+        },
+        {
+          "name": "Cancelar",
+          "request": { "method": "POST", "url": "{{baseUrl}}/api/pedidos/1/cancelar" }
+        },
+        {
+          "name": "Deletar",
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/api/pedidos/1" }
+        }
+      ]
+    }
+  ]
+}
