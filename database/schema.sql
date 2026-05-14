@@ -84,3 +84,4 @@ INSERT INTO clientes (nome, email, cpf, telefone, endereco) VALUES
     ('Maria Silva', 'maria@example.com', '12345678901', '11999990001', 'Rua A, 100 - Sao Paulo/SP'),
     ('Joao Santos', 'joao@example.com',  '98765432100', '11999990002', 'Rua B, 200 - Sao Paulo/SP')
 ON CONFLICT DO NOTHING;
+-- END
