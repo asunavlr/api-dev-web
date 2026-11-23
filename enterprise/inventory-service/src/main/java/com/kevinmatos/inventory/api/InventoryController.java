@@ -8,6 +8,8 @@ import com.kevinmatos.inventory.service.InventoryService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -50,7 +52,7 @@ public class InventoryController {
                 reservation.getQuantity(), reservation.getStatus());
     }
 
-    public record StockRequest(@NotBlank String sku, @Min(0) int availableQuantity) {}
+    public record StockRequest(@NotBlank @Size(max = 120) String sku, @NotNull @Min(0) Integer availableQuantity) {}
     public record StockResponse(String sku, int availableQuantity) {}
     public record ReservationResponse(String orderId, String sku, int quantity, String status) {}
 }
