@@ -3,6 +3,16 @@ server:
 spring:
   application:
     name: order-service
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5433/orders}
+    username: ${DATABASE_USERNAME:orders}
+    password: ${DATABASE_PASSWORD:orders}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
   kafka:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
     producer:
@@ -17,3 +27,5 @@ management:
     web:
       exposure:
         include: health,info,metrics,prometheus
+outbox:
+  poll-interval-ms: ${OUTBOX_POLL_INTERVAL_MS:1000}
