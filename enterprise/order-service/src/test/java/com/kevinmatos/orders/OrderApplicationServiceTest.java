@@ -2,7 +2,6 @@ package com.kevinmatos.orders;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kevinmatos.orders.api.CreateOrderRequest;
 import com.kevinmatos.orders.repository.OrderRepository;
 import com.kevinmatos.orders.repository.OutboxEventRepository;
@@ -18,7 +17,6 @@ class OrderApplicationServiceTest {
     @Autowired OrderApplicationService service;
     @Autowired OrderRepository orders;
     @Autowired OutboxEventRepository outbox;
-    @Autowired ObjectMapper objectMapper;
 
     @Test
     void persistsOrderAndOutboxEventInOneTransaction() {
