@@ -3,16 +3,30 @@ server:
 spring:
   application:
     name: inventory-service
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5434/inventory}
+    username: ${DATABASE_USERNAME:inventory}
+    password: ${DATABASE_PASSWORD:inventory}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
   kafka:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
     consumer:
       group-id: inventory-service
       auto-offset-reset: earliest
+      enable-auto-commit: false
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
         spring.json.value.default.type: com.kevinmatos.inventory.events.OrderCreated
         spring.json.trusted.packages: com.kevinmatos.inventory.events
+        spring.json.use.type.headers: false
+    listener:
+      ack-mode: record
 management:
   endpoints:
     web:

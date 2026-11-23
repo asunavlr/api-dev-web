@@ -241,3 +241,8 @@ MIT
 ## Event-driven microservices extension
 
 This branch adds a runnable Java 21 / Spring Boot 3 / Kafka example under [enterprise/](enterprise/README.md): an Order Service publishes versioned order events and an Inventory Service consumes them. Redpanda provides a local Kafka-compatible broker. See the branch documentation for commands and production-hardening notes.
+
+
+## Enterprise event-driven microservices
+
+A separate Java 21 / Spring Boot 3 implementation lives in [enterprise/](enterprise/README.md). It demonstrates a transactional outbox, Kafka event publication, idempotent inventory reservations, retry topics and dead-letter handling. Run the complete local stack with Docker Compose; the Pet Shop API remains independent.
