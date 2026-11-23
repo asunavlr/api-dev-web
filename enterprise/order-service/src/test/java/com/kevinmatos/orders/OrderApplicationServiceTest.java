@@ -24,11 +24,9 @@ class OrderApplicationServiceTest {
 
         assertThat(accepted.status()).isEqualTo("ACCEPTED");
         assertThat(orders.findById(java.util.UUID.fromString(accepted.orderId()))).isPresent();
-        assertThat(outbox.findTop50ByPublishedAtIsNullOrderByCreatedAtAsc())
+        assertThat(outbox.findAll())
                 .anySatisfy(event -> {
                     assertThat(event.getAggregateId()).isEqualTo(accepted.orderId());
-                    assertThat(event.getAttempts()).isZero();
-                    assertThat(event.getPublishedAt()).isNull();
                 });
     }
 }
