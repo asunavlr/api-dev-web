@@ -33,6 +33,10 @@ public class InventoryService {
 
     @Transactional
     public void reserve(OrderCreated event) {
+        if (event.schemaVersion() != 1 || event.quantity() <= 0
+                || event.eventId() == null || event.orderId() == null) {
+            throw new IllegalArgumentException("Unsupported or invalid order event");
+        }
         if (reservations.existsById(event.eventId())) {
             return;
         }
