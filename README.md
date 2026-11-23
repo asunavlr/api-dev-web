@@ -236,3 +236,8 @@ java -jar target/petshop-api-0.0.1-SNAPSHOT.jar
 ## Licenca
 
 MIT
+
+
+## Event-driven microservices extension
+
+This branch adds a runnable Java 21 / Spring Boot 3 / Kafka example under [enterprise/](enterprise/README.md): an Order Service publishes versioned order events and an Inventory Service consumes them. Redpanda provides a local Kafka-compatible broker. See the branch documentation for commands and production-hardening notes.
