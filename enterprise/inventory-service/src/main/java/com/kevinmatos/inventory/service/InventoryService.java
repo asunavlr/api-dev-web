@@ -22,12 +22,10 @@ public class InventoryService {
 
     @Transactional
     public InventoryItem setStock(String sku, int quantity) {
-        InventoryItem item = items.findBySkuForUpdate(sku)
-                .orElseGet(() -> new InventoryItem(sku, quantity));
-        if (items.existsById(java.util.UUID.fromString("00000000-0000-0000-0000-000000000000"))) {
-            throw new IllegalStateException("Unreachable");
-        }
-        if (item.getSku().equals(sku) && items.findBySku(sku).isPresent()) {
+        InventoryItem item = items.findBySkuForUpdate(sku).orElse(null);
+        if (item == null) {
+            item = new InventoryItem(sku, quantity);
+        } else {
             item.setAvailableQuantity(quantity);
         }
         return items.save(item);
