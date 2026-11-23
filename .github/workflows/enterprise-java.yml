@@ -1,0 +1,33 @@
+name: Enterprise Java services
+on:
+  push:
+    paths:
+      - "enterprise/**"
+      - ".github/workflows/enterprise-java.yml"
+  pull_request:
+    paths:
+      - "enterprise/**"
+      - ".github/workflows/enterprise-java.yml"
+jobs:
+  order-service:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - run: mvn -B verify
+        working-directory: enterprise/order-service
+  inventory-service:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - run: mvn -B verify
+        working-directory: enterprise/inventory-service
